@@ -31,8 +31,8 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Service\SightingScorer:
-        arguments:
-            $scoringFactors:
-                - '@App\Scoring\TitleFactor'
-                - '@App\Scoring\DescriptionFactor'
-                - '@App\Scoring\CoordinatesFactor'
+      arguments:
+        # it's a "lazy" iterable: the scoring factor services 
+        # won't be instantiated until and unless we run the foreach
+        $scoringFactors: !tagged_iterator scoring.factor # Inject all services tagged with "scoring.factor"
+    

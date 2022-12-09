@@ -10,9 +10,9 @@ class SightingScorer
     /**
      * @var ScoringFactorInterface[]
      */
-    private array $scoringFactors;
+    private iterable $scoringFactors;
 
-    public function __construct(array $scoringFactors)
+    public function __construct(iterable $scoringFactors)
     {
         $this->scoringFactors = $scoringFactors;
     }
