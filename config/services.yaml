@@ -30,7 +30,12 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    # whenever someone tries to autowire or use the DebuggableSightingScorer service, 
+    ## you should actually pass them the SightingScorer service...
+    App\Service\DebuggableSightingScorer: '@App\Service\SightingScorer'
+
     App\Service\SightingScorer:
+        class: App\Service\DebuggableSightingScorer
         arguments:
           # it's a "lazy" iterable: the scoring factor services 
           # won't be instantiated until and unless we run the foreach
