@@ -40,4 +40,5 @@ services:
           # it's a "lazy" iterable: the scoring factor services 
           # won't be instantiated until and unless we run the foreach
           $scoringFactors: !tagged_iterator scoring.factor # Inject all services tagged with "scoring.factor"
+          $scoreAdjusters: !tagged_iterator scoring.adjuster
     

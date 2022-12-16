@@ -12,7 +12,5 @@ interface ScoringFactorInterface
      * This method should not throw an exception for any normal reason.
      */
     public function score(BigFootSighting $sighting): int;
-
-    public function adjustScore(int $finalScore, BigFootSighting $sighting): int;
-
+    
 }
