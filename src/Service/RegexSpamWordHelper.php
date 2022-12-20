@@ -2,9 +2,17 @@
 
 namespace App\Service;
 
-class RegexSpamWordHelper
+use App\Comment\CommentSpamCounterInterface;
+
+class RegexSpamWordHelper implements CommentSpamCounterInterface
 {
-    public function getMatchedSpamWords(string $content): array
+
+    public function countSpamWords(string $content): int
+    {
+        return count($this->getMatchedSpamWords($content));
+    }
+    
+    private function getMatchedSpamWords(string $content): array
     {
         $badWordsOnComment = [];
 
@@ -14,7 +22,7 @@ class RegexSpamWordHelper
 
         return $badWordsOnComment[0];
     }
-    
+
     private function spamWords(): array
     {
         return [
